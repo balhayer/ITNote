@@ -1,2 +1,2 @@
 # ITNote
-# ITNote
+Note about IT
