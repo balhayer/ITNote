@@ -5,7 +5,8 @@
 
 # Fortigate System Management
 - get hardware status
-- get system status- get hardware memory
+- get system status
+- get hardware memory
 - get system performance status (run for 5 times)
 - diagnose sys top 2 50 (run for 30 Sec and CTRL C to stop)
 - diagnose sys top-summary
