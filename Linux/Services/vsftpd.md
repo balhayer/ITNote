@@ -157,7 +157,7 @@ Jul 12 12:31:58 server vsftpd[155725]: pam_unix(vsftpd:auth): Couldn't open /etc
 - Solution: Add this to configuration: allow_writeable_chroot=YES
 
 ## Some Management Tasks
-### Generate many account with random password
+### Generate many accounts with random passwords
 - Generate random password: python3 PasswordGenerator.py (this script is under Programming/Python/Sample Folder)
 - Generate user:plaintextpassword: echo $username":"$passfromabovecommand
 - Generate user:encryptedpassword: echo $username":"$(openssl passwd -1 $passfromabovecommand)
@@ -165,7 +165,7 @@ Jul 12 12:31:58 server vsftpd[155725]: pam_unix(vsftpd:auth): Couldn't open /etc
 for i in `cat username.txt`; do pass=$(python3 PasswordGenerator.py); echo $i":"$pass >> plaintext.txt;echo $i:$(openssl passwd -1 $pass) >> encrypted.txt; ;done
 ```
 
-### Generate folders for many account
+### Generate folders for many accounts
 - Copy folder of sample account to other account: sudo cp -r $sampleaccount $newaccount
 - Change ownership of folder and files to vftpuser: sudo chown -R vftpuser:vftpuser $newaccount
 ```bash
