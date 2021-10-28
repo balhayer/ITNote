@@ -1,3 +1,64 @@
+# TCPdump
+## Commands
+
+- Read pcap file: tcpdump -r file.pcap
+- Skip DNS lookup: tcpdump -n -r file.pcap
+- Print packet in HEX and ASCII format: tcpdump -X -r file.pcap
+- Write to pcap file: tcpdump -w file.pcap
+- Some filters:
+    - tcpdump src host 192.168.1.1 -r file.pcap
+    - tcpdump dst host 192.168.1.1 -r file.pcap
+    - tcpdump port 81 -r file.pcap
+
+## TCP Header
+```bash
+    0                   1                   2                   3   
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |          Source Port          |       Destination Port        |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |                        Sequence Number                        |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |                    Acknowledgment Number                      |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |  Data |       |C|E|U|A|P|R|S|F|                               |
+    | Offset|  Res. |W|C|R|C|S|S|Y|I|            Window             | 
+    |       |       |R|E|G|K|H|T|N|N|                               |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |           Checksum            |         Urgent Pointer        |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |                    Options                    |    Padding    |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+    |                             data                              |
+    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+```
+
+- Find all traffic with TCP port > 1024: tcpdump -i eth1 ‘tcp[0:2] > 1024’
+
+## TCP Flags
+
+- Is 13 bytes (count from 0) in a TCP header
+- Flags: URG, ACK, PUSH, RST, SYN, FIN; which corresponds to 32 16 8 4 2 1.
+- Mnenomic for those flags is Unskilled Attacker Pester Real Security Folks
+
+### Example of using TCP Flags in TCPDump:
+
+- Find all SYN packets:
+    - tcpdump ‘tcp[13] & 2!=0’
+    - tcpdump ‘tcp[13] & 2==2’
+- Find all RST packets:
+    - tcpdump ‘tcp[13] & 4!=0’
+    - tcpdump ‘tcp[13] & 4==4’
+- Find all ACK packets:
+    - tcpdump ‘tcp[13] & 16!=0’
+    - tcpdump ‘tcp[13] & 16==16’
+- Find all SYN-ACK packets:
+    - tcpdump ‘tcp[13]=18’
+
+## Reference
+- https://danielmiessler.com/study/tcpflags/
+
+
 # Tmux
 ## Installation
 
