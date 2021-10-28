@@ -58,6 +58,93 @@
 ## Reference
 - https://danielmiessler.com/study/tcpflags/
 
+# Tshark
+## Installation
+
+- sudo add-apt-repository ppa:wireshark-dev/stable
+- sudo apt-get install wireshark tshark
+- sudo apt-cache madison tshark
+- sudo dpkg-reconfigure wireshark-common: reconfigure normal user to capture packet
+    - sudo usermod -a -G wireshark $USER
+    - newgrp wireshark: activate wireshark group
+    - id to check
+- Default behavior:
+    - only capture unicast, broadcast and multicast
+    - check using: ifconfig
+    - Change to promiscuous mode: ifconfig <$int> [-]promisc (- to disable)
+
+## Options:
+
+- -D: list interface
+- -i {any|interface name|number from -D}: capture on any interface
+- -c <$num of packets to capture>
+- -w <.pcap file to write>
+- -r: <.pcap file to read>
+- -V: see details of packet
+    - tshark -r capture.pcap -c 1 -V
+- -T <$format>:
+    - tshark -T x: just invalid variable to get help about -T
+    - tshark -r capture.pcap -T psml > capture.psml
+- -b filesize:<$KBytes> -b files:<$num_of_file> : buffer
+- -d: decode as protocol use non-standard port
+    - tshark -d .: get help
+    - Case Study: SIP-TLS + RTP
+    - VoIP Traffic: SIP over TLS but RTP not encrypted
+    - Tshark and other tools depend on SIP to decode RTP: Rely on SDP packets which are encrypted
+    - Assist Tshark/Wireshark by decoding UDP as RTP
+    - tshark -r voice.pcap -Y “udp.port=4000” -d udp.port==4000,rtp
+- -G: preference
+    - tshark -G help: get help
+    - tshark -G currentprefs | grep ssl
+- -o “ssl.keys_list:0.0.0.0,443,http,<$keyfile>”: SSL Decryption
+    - tshark -r HTTPStraffic.pcap -o “ssl_keys_list:0.0.0.0,443,http,private.key”
+
+## Conversion
+
+- installation: sudo apt install xsltproc
+- from xml to html:
+    - tshark -r capture.pcap -T pdml > icmp.xml
+    - xsltproc /user/share/wireshark/pdml2html.xsl icmp.xml > icmp.html
+
+- ## Filter
+
+- -f <$filter>: capture filter
+    - tshark -I ens33 -c 4 -f “tcp port 80” -w tcp80.pcap
+    - https://www.wireshark.org/docs/man-pages/pcap-filter.html
+- -Y ‘<$filter>’: display filter
+    - tshark -r capture.pcap -Y ‘http.request.method==”GET”‘
+    - https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html
+    - https://www.wireshark.org/docs/dfref
+
+## Extract Data
+
+- -Tfields -e <$expression>: filter specific header/information
+    - tshark -r wireless.pcap -Y ‘wlan.fc.type_subtype==0x0008’ Tfields -e ‘wlan.ssid’
+        - -Y ‘wlan.fc.type_subtype==0x0008’: beacon packet
+    - tshark -r capture.pcap -Y ‘http.request.method==”GET”‘ -Tfields -e http.post -e http.request.uri
+
+## Summary/Statistics:
+
+- -z <$filter>: statistics
+    - tshark -z help
+    - tshark -r capture.pcap -z io,phs: show statistics after showing all packet
+    - tshark -r capture.pcap -q -z io,phs: show statistics without showing packet details
+    - tshark -r capture.pcap -q -z io,phs,’wlan.bssid==<mac address of AP>’: show statistics for specific AP
+    - or tshark -r capture.pcap -R ‘wlan.bssid==<mac of AP>’ -q -z io,phs: show statistics for specific AP
+    - tshark -r wireless.pcap -q -z endpoints,<wlan|tcp|udp>
+    - tshark -r wireless.pcap -q -z endpoints,wlan,’wlan.bssid==<mac of AP>’
+    - tshark -r wireless.pcap -q -z conv,ip (conversion ip)
+    - tshark -r wireless.pcap -q -z expert: expert information
+    - tshark -r httptraffic.pcap -q -z http.tree
+    - tshark -r voice.pcap -q -z sip.stat
+    - tshark -r voice.pcap -q -z rtp.streams
+    - tshark -r voice.pcap -q -z follow,tcp|udp
+
+## Online tool to read file
+
+- xmlgrid.net
+- jsonformatter.org
+
 
 # Tmux
 ## Installation
