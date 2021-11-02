@@ -60,6 +60,25 @@ line 4
 ## Reference
 - https://www.cyberciti.biz/faq/bash-prepend-text-lines-to-file/
 
+===========================================================================================================
+# Shift - Shift positional parameters
+```bash
+cat test.sh
+#!/bin/bash
+
+echo $1
+echo $2
+echo $3
+shift 2
+echo $@
+
+./test.sh one two three four
+one
+two
+three
+three four
+```
+===========================================================================================================
 # Sudo and Visudo
 
 ## Edit sudo configuration

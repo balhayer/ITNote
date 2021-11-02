@@ -16,7 +16,7 @@ Character in hex must be uppercase
 echo “obase=10; ibase=16; AB” | bc
 echo “obase=2; ibase=16; F” | bc
 ```
-
+===========================================================================================================
 # Compare files
 ## Comm
 
@@ -31,6 +31,9 @@ echo “obase=2; ibase=16; F” | bc
     - -: line appears in first file only
     - +: line appears in second file only
 
+### Some Options
+- -y: compare side by side
+
 ## Vimdiff
 
 - open multiple files in multiple vim windows
@@ -40,6 +43,7 @@ echo “obase=2; ibase=16; F” | bc
 - [c: jumps to the previous change
 - C w: switches to the other split window.
 
+===========================================================================================================
 # Combination usage of sed, awk, cut, paste, cat, echo, grep
 
 ## Combine each 2nd line to the line before it
@@ -190,6 +194,6 @@ Extended IP access list InboundTraffic
 
 - cut -c 1-N
 
+===========================================================================================================
 # Reference
-
 - https://unix.stackexchange.com/questions/184340/how-to-grep-a-line-with-unknown-number-of-its-indented-lines
