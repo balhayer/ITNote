@@ -11,3 +11,8 @@
 ## dpkg
 
 - dpkg -i package.deb: install .deb package
+
+## RPM - Redhat, CentOS
+- rpm -qa | grep -i <$keyword>: search for package
+- rpm -e <$package name>: erase/remove package
+- rpm -ivh <$package.rpm>: Install package
