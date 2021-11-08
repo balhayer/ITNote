@@ -49,3 +49,4 @@ test
 
 ## Reference
 - https://www.tutorialspoint.com/unix_commands/xxd.htm
+- https://manpages.ubuntu.com/manpages/trusty/man1/xxd.1.html
