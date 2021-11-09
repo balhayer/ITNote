@@ -10,7 +10,9 @@ config log syslogd setting
     set format cef
 end
 ```
-# Reference
 
+# Azure Sentinel Notebooks
+
+# Reference
 - https://docs.microsoft.com/en-us/azure/sentinel/connect-common-event-format#security-considerations
 - https://docs.microsoft.com/en-us/azure/azure-monitor/agents/agent-windows?WT.mc_id=Portal-fx#obtain-workspace-id-and-key
