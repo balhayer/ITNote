@@ -79,6 +79,7 @@
 - :%s//: replace all lines
 - :%s///g: replace all lines without asking
 - :%s/\n/,/g: replace all new line with comma, make a list of item separated by comma
+- :help range: get help for range 
 
 ### Indent multiple line:
 - Press V to change to visual mode
