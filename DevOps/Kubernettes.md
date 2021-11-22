@@ -4,9 +4,11 @@
 - Pod: unit of management of k8s, run containers (1 or more), but usually 1 app per pod
 - IP: assigned to Pod, but changed when pod changes -> service
 - Service: Permanent IP, doesn't change even when pod change
+- Ingress: external access to the services in a cluster, typically HTTP. Ingress may provide load balancing, SSL termination and name-based virtual hosting.
 - ConfigMap: Mapping of all parameters, but not confidential parameter such as password, used by k8s to build cluster -> Secret
 - Secret: contain confidential parameters
 - Deployment: blueprint, in yaml or json format, to build cluster, define replica of an app, but not for database because of data inconsistency -> Statefulset
 - Statefulset: like deployment but for database to ensure data consistency
 
 # Sample Projects
+

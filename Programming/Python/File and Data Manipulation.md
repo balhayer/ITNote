@@ -87,6 +87,32 @@ path = “link.txt”
 csv_append(data, path)
 ```
 
+## PDF Files
+
+### Installation
+- Pymupdf: pip3 install pymupdf
+- PDFMinder: pip3 install pdfminer
+### Usage of pymupdf
+```Python
+import fitz #Pymupdf
+    with fitz.open("2020-06-04-upload.pdf") as p:
+        text=""
+        for page in p:
+                text+=page.get_text()
+print(text)
+```
+
+### Usage of pdfminer
+```python
+from pdfminer.high_level import extract_text
+
+pdffile = 'filename.pdf'
+
+text = extract_text(pdffile)
+print (text)
+```
+
 # Reference
 
 - [Read and Write CSV Files in Python](https://www.learnbyexample.org/reading-and-writing-csv-files-in-python/)
+- 
