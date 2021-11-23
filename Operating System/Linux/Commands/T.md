@@ -196,6 +196,11 @@ Commands
     - Save-buff -b <buffername> <file>
     - https://blog.sleeplessbeastie.eu/2019/10/28/how-to-store-the-contents-of-tmux-pane/
     - https://ricochen.wordpress.com/2011/04/07/capture-tmux-output-the-much-less-painful-way/
+- tmux save-buffer -: print latest buffer to screen
+    - tmux save-buffer - | xclip: copy to host os clipboard from a remote connection, need X11 Forwarding
+    - tmux list-buffer
+    - tmux save-buffer -b <$buffername>
+    - tmux delete-buffer: delete the latest buffer
 
 ## Reference
 - https://www.linode.com/docs/networking/ssh/persistent-terminal-sessions-with-tmux/

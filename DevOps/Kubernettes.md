@@ -1,5 +1,5 @@
 # Components
-- Master Node: Control plane, includes, API Server, Scheduler, etcd (storage) 
+- Master Node: Control plane, includes, API Server, Scheduler, Controller Manager, etcd (storage) 
 - Worker Node: Run pods
 - Pod: unit of management of k8s, run containers (1 or more), but usually 1 app per pod
 - IP: assigned to Pod, but changed when pod changes -> service
@@ -11,4 +11,3 @@
 - Statefulset: like deployment but for database to ensure data consistency
 
 # Sample Projects
-

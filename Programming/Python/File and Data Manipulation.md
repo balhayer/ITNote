@@ -98,7 +98,7 @@ import fitz #Pymupdf
     with fitz.open("2020-06-04-upload.pdf") as p:
         text=""
         for page in p:
-                text+=page.get_text()
+            text+=page.get_text()
 print(text)
 ```
 
