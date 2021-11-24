@@ -125,3 +125,6 @@ The document has moved
 <A HREF="https://www.google.com/">here</A>.
 </BODY></HTML>
 ```
+
+# Reference:
+- https://www.thesslstore.com/blog/clear-hsts-settings-chrome-firefox/
