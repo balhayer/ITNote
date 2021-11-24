@@ -1,3 +1,5 @@
+# External Identity
+- Tenant: Resource Tenant (where the app or resource is), Account Tenant (Where the account is)
 # Authentication Method for Azure AD Hybrid Identity
 - Cloud Authentication
     - Azure AD password hash synchronization: enable authentication for on-prem objects in Azure AD, users can use same username and password 
