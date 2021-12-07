@@ -3,7 +3,7 @@
 # Authentication Method for Azure AD Hybrid Identity
 - Cloud Authentication
     - Azure AD password hash synchronization: enable authentication for on-prem objects in Azure AD, users can use same username and password 
-    - Azure AD Pass-through Authentication (PTA): provides password validation for Azure AD authentication by using an agents running on on-prem servers.
+    - Azure AD Pass-through Authentication (PTA): provides password validation for Azure AD authentication by using an agents running on on-prem servers. Companies with a security requirement to immediately enforce on-premises user account states, password policies, and sign-in hours might use this authentication method.
 - Federated Authentiation
     - Hands off authentication proceses to another trusted system such as on-prem AD Federation Services (AD FS)
 

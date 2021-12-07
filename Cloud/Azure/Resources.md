@@ -1,0 +1,1 @@
+- https://microsoftlearning.github.io/AZ500-AzureSecurityTechnologies/
