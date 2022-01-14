@@ -1,3 +1,6 @@
+# w32tm
+- Check times against ntp server: w32tm /stripchart /computer:<$ntp.domain.com> /dataonly /samples:5
+
 # wevtutil
 
 	- Enables you to retrieve information about event logs and publishers, install and uninstall event manifests, run queries, and export, archive, and clear logs.
