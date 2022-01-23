@@ -18,3 +18,6 @@ Hello
 C:\>type poc.hex
 48656c6c6f0a
 ```
+
+## Decode Base64
+- certutil -decode file.b64 decoded.txt
