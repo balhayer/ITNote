@@ -46,6 +46,7 @@ line 4
 ## Delete a line
 
 - sed -i ‘2 d’ file.txt
+- sed -si '/^$/d' file.txt: delete empty lines
 
 ## Combine multiple lines to one line
 
